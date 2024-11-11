@@ -24,7 +24,7 @@ EPOCH = 0
 ERRO = 0
 dados = np.hstack((X, Y_expected.reshape(-1, 1)))
 
-print(f"INPUT_SIZE: {INPUT_SIZE}, INITIAL_WEIGHTS: {INITIAL_WEIGHTS[1:]}, BIAS: {BIAS}")
+#print(f"INPUT_SIZE: {INPUT_SIZE}, INITIAL_WEIGHTS: {INITIAL_WEIGHTS[1:]}, BIAS: {BIAS}")
 
 # Treinamento
 while True:
@@ -49,8 +49,8 @@ while True:
             perceptron.set_weights(weights)
             perceptron.set_bias(bias)
 
-    if EPOCH % 10000 == 0:
-        print(f"EPOCA: {EPOCH + 1}, ERRO: {ERRO}")   
+    #if EPOCH % 10000 == 0:
+        #print(f"EPOCA: {EPOCH + 1}, ERRO: {ERRO}")   
         #print(f"WEIGHTS: {perceptron.get_weights()}, BIAS: {perceptron.get_bias()}") 
     if ERRO == 0:
         break
@@ -60,7 +60,7 @@ end_weights = perceptron.get_weights()
 end_bias = perceptron.get_bias()
 print("Perceptron treinado com sucesso em " + str(EPOCH) + " epocas!")
 print("paramentros inicias: ")
-print(f"INITIAL_WEIGHTS: {INITIAL_WEIGHTS[1:]}, INITIAL_BIAS: {BIAS}")
+print(f"WEIGHTS: {INITIAL_WEIGHTS[1:]}, BIAS: {BIAS}")
 
 print("\nparamentros finais: ")
 print(f"WEIGHTS: {end_weights}, BIAS: {end_bias}")
