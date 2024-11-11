@@ -1,4 +1,6 @@
 
+import numpy as np
+
 class Perceptron:
     def __init__(self, input_size:int, weights:list, bias:float, function="degrau-bipolar"):
         self.input_size = input_size
@@ -15,11 +17,11 @@ class Perceptron:
                 raise ValueError('Função de ativação inválida, funções aceitas apenas "degrau" ou "degrau-bipolar"')    
             
     def predict(self, inputs):
-        if len(inputs) != self.input_size:
+        if len(inputs) != self.input_size+1:
             raise ValueError('O número de entradas deve ser igual ao número de pesos')
         
-        # Multiplicar as entradas pelos pesos e somar o bias
-        soma = sum(x * w for x, w in zip(inputs, self.weights)) + self.bias
+        weights_with_bias = np.insert(self.weights, 0, self.bias)
+        soma = np.dot(weights_with_bias, inputs)
 
         return float(self.function(soma))
     
