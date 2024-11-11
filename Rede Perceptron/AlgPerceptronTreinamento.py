@@ -8,17 +8,16 @@ dados = pd.read_csv("Rede Perceptron/dados-apendice1.csv")
 
 # Preparar os dados de entrada e saída
 X = dados[['x1', 'x2', 'x3']].values
-X = np.hstack((np.full((X.shape[0], 1), -1), X))  # x0 = -1
 Y_expected = dados['d'].values
 
 # Definir parâmetros iniciais
 LR = 0.01
-INPUT_SIZE = len(X[0])  # Inclui o x0 agora
+INPUT_SIZE = len(X[0])
 INITIAL_WEIGHTS = [random.random() for _ in range(INPUT_SIZE)]
-BIAS = INITIAL_WEIGHTS[0]  # Inicializa o bias no peso do x0
+BIAS = random.random()  # Inicializa o bias no peso do x0
 
 # Instanciar o perceptron
-perceptron = Perceptron(INPUT_SIZE - 1, INITIAL_WEIGHTS[1:], BIAS)  # INPUT_SIZE - 1 para os pesos
+perceptron = Perceptron(INPUT_SIZE, INITIAL_WEIGHTS, BIAS)  # INPUT_SIZE - 1 para os pesos
 
 EPOCH = 0
 ERRO = 0
@@ -40,6 +39,8 @@ while True:
             weights = perceptron.get_weights()
             bias = perceptron.get_bias()
             weights = np.insert(weights, 0, bias)
+
+            inputs = np.insert(inputs, 0, perceptron.get_x0())
             
             weights = weights + LR * (expected_output - prediction) * inputs
 
@@ -60,7 +61,7 @@ end_weights = perceptron.get_weights()
 end_bias = perceptron.get_bias()
 print("Perceptron treinado com sucesso em " + str(EPOCH) + " epocas!")
 print("paramentros inicias: ")
-print(f"WEIGHTS: {INITIAL_WEIGHTS[1:]}, BIAS: {BIAS}")
+print(f"WEIGHTS: {INITIAL_WEIGHTS}, BIAS: {BIAS}")
 
 print("\nparamentros finais: ")
 print(f"WEIGHTS: {end_weights}, BIAS: {end_bias}")
