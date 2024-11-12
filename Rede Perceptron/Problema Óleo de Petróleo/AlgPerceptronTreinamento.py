@@ -29,10 +29,10 @@ dados = np.hstack((X, Y_expected.reshape(-1, 1)))
 while True:
     ERRO = 0
     for amostra in dados:
-        inputs = amostra[:-1].copy()  # Inclui x0 como -1
+        inputs = amostra[:-1].copy()
         expected_output = float(amostra[-1])
 
-        prediction = perceptron.predict(inputs)  # Ignora x0 em `predict`
+        prediction = perceptron.predict(inputs)
         if prediction != expected_output:
             ERRO += 1 
 

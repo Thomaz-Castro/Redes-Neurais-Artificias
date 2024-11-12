@@ -30,7 +30,7 @@ for cj_treinamento in range(1, 6):
     BIAS = W_TX[PESOS-1][0]
 
     # Instanciar o perceptron
-    perceptron = Perceptron(INPUT_SIZE, INITIAL_WEIGHTS, BIAS)  # INPUT_SIZE - 1 para os pesos
+    perceptron = Perceptron(INPUT_SIZE, INITIAL_WEIGHTS, BIAS) 
 
     y = perceptron.predict(X)
 
