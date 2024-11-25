@@ -29,10 +29,10 @@ for cj_treinamento in range(1, 6):
     INITIAL_WEIGHTS = W_TX[PESOS-1][1:]
     BIAS = W_TX[PESOS-1][0]
 
-    # Instanciar o perceptron
-    perceptron = Adaline(INPUT_SIZE, INITIAL_WEIGHTS, BIAS)  # INPUT_SIZE - 1 para os pesos
+    # Instanciar o adaline
+    adaline = Adaline(INPUT_SIZE, INITIAL_WEIGHTS, BIAS)  # INPUT_SIZE - 1 para os pesos
 
-    y = perceptron.predict(X)
+    y = adaline.predict(X)
 
     print(f"Treinamento {cj_treinamento}: {y}")    
 
